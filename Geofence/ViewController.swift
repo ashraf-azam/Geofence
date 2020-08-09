@@ -8,8 +8,10 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
+    @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
 
@@ -21,6 +23,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //        loadAllGeotifications()
     }
 
-
+    @IBAction func addRegion(_ sender: Any) {
+    }
+    
 }
 
