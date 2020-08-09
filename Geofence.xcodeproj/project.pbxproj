@@ -13,6 +13,7 @@
 		86C20B8224DF94E1001D62DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86C20B8024DF94E1001D62DE /* Main.storyboard */; };
 		86C20B8424DF94E2001D62DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86C20B8324DF94E2001D62DE /* Assets.xcassets */; };
 		86C20B8724DF94E2001D62DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86C20B8524DF94E2001D62DE /* LaunchScreen.storyboard */; };
+		86C20B9024DFA74C001D62DE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86C20B8F24DFA74C001D62DE /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		86C20B8324DF94E2001D62DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86C20B8624DF94E2001D62DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86C20B8824DF94E2001D62DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86C20B8F24DFA74C001D62DE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86C20B9024DFA74C001D62DE /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			children = (
 				86C20B7924DF94E1001D62DE /* Geofence */,
 				86C20B7824DF94E1001D62DE /* Products */,
+				86C20B8E24DFA74C001D62DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +69,14 @@
 				86C20B8824DF94E2001D62DE /* Info.plist */,
 			);
 			path = Geofence;
+			sourceTree = "<group>";
+		};
+		86C20B8E24DFA74C001D62DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				86C20B8F24DFA74C001D62DE /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
