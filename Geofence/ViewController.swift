@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-//        loadAllGeotifications()
     }
 
     @IBAction func addRegion(_ sender: Any) {
@@ -36,6 +35,13 @@ class ViewController: UIViewController {
         mapView.addOverlay(circle)
     }
     
+    func showAlert(title: String, msg: String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension ViewController: CLLocationManagerDelegate {
@@ -43,6 +49,15 @@ extension ViewController: CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         mapView.showsUserLocation = true
     }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        showAlert(title: "Hello", msg: "You've entered a new region")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        showAlert(title: "Goodbve", msg: "You've left the region")
+    }
+
 }
 
 extension ViewController: MKMapViewDelegate {
