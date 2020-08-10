@@ -17,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		86AC9A0824E1A03100E1432D /* Kuala Lumpur.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Kuala Lumpur.gpx"; sourceTree = "<group>"; };
+		86AC9A0924E1A0E100E1432D /* Mutiara Damansara.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Mutiara Damansara.gpx"; sourceTree = "<group>"; };
+		86AC9A0A24E1A19300E1432D /* Bukit Kiara Park.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Bukit Kiara Park.gpx"; sourceTree = "<group>"; };
 		86C20B7724DF94E1001D62DE /* Geofence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geofence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86C20B7A24DF94E1001D62DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86C20B7C24DF94E1001D62DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +70,9 @@
 				86C20B8324DF94E2001D62DE /* Assets.xcassets */,
 				86C20B8524DF94E2001D62DE /* LaunchScreen.storyboard */,
 				86C20B8824DF94E2001D62DE /* Info.plist */,
+				86AC9A0824E1A03100E1432D /* Kuala Lumpur.gpx */,
+				86AC9A0924E1A0E100E1432D /* Mutiara Damansara.gpx */,
+				86AC9A0A24E1A19300E1432D /* Bukit Kiara Park.gpx */,
 			);
 			path = Geofence;
 			sourceTree = "<group>";

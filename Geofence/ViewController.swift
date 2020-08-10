@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+        mapView.setUserTrackingMode(.follow, animated: true)
     }
 
     @IBAction func addRegion(_ sender: Any) {
