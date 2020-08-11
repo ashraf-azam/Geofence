@@ -15,8 +15,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7im-4u-NRj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIt-p4-tJp">
+                                        <rect key="frame" x="182.5" y="14.5" width="49.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="xIt-p4-tJp" firstAttribute="centerX" secondItem="7im-4u-NRj" secondAttribute="centerX" id="C0S-HW-VsQ"/>
+                                    <constraint firstItem="xIt-p4-tJp" firstAttribute="centerY" secondItem="7im-4u-NRj" secondAttribute="centerY" id="Db1-4i-gRm"/>
+                                    <constraint firstAttribute="height" constant="50" id="oad-eG-qpd"/>
+                                </constraints>
+                            </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-Mh-rfE">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="iP6-WT-cVZ"/>
@@ -29,12 +46,16 @@
                             <constraint firstItem="vLE-Mh-rfE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DIF-rk-zoY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vLE-Mh-rfE" secondAttribute="bottom" id="GKO-jm-tdK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vLE-Mh-rfE" secondAttribute="trailing" id="JjB-tk-Tdg"/>
-                            <constraint firstItem="vLE-Mh-rfE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Pd3-CD-4uv"/>
+                            <constraint firstItem="7im-4u-NRj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xut-IH-nxF"/>
+                            <constraint firstItem="vLE-Mh-rfE" firstAttribute="top" secondItem="7im-4u-NRj" secondAttribute="bottom" id="dEn-yh-Ciy"/>
+                            <constraint firstItem="7im-4u-NRj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uCd-xd-Oy1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7im-4u-NRj" secondAttribute="trailing" id="v2k-fG-z5z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="vLE-Mh-rfE" id="p56-7H-S6x"/>
+                        <outlet property="statusLabel" destination="xIt-p4-tJp" id="Icw-6H-nhi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -44,7 +65,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="139" y="127"/>
+            <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="yoq-mF-Hji">

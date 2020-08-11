@@ -12,6 +12,7 @@ import MapKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var statusLabel: UILabel!
     
     let locationManager = CLLocationManager()
 
@@ -58,8 +59,8 @@ class ViewController: UIViewController {
                         .compactMap{ $0 }
                         .joined(separator: ", ")
                     
-                    let showDealsText = "Geofence location : "
-                    let fullString = NSMutableAttributedString(string:showDealsText)
+                    let loctionText = "Geofence location : "
+                    let fullString = NSMutableAttributedString(string:loctionText)
                     let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)]
                     let boldString = NSMutableAttributedString(string:fullAddress, attributes:attrs)
                     fullString.append(boldString)
@@ -81,10 +82,12 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         showAlert(title: "Hello", msg: "You've entered a new region")
+        self.statusLabel.text = "Inside"
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         showAlert(title: "Goodbve", msg: "You've left the region")
+        self.statusLabel.text = "Outside"
     }
 
 }
