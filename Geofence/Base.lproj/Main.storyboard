@@ -24,12 +24,30 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ccn-fZ-ccF">
+                                        <rect key="frame" x="376" y="14" width="18" height="22"/>
+                                        <state key="normal" image="plus" catalog="system"/>
+                                        <connections>
+                                            <action selector="changeRegion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ayQ-He-Im5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIT-e7-0v7" userLabel="Remove Geofence">
+                                        <rect key="frame" x="20" y="14" width="18" height="22"/>
+                                        <state key="normal" image="minus" catalog="system"/>
+                                        <connections>
+                                            <action selector="removeGeo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4O5-zi-q3V"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="xIt-p4-tJp" firstAttribute="centerX" secondItem="7im-4u-NRj" secondAttribute="centerX" id="C0S-HW-VsQ"/>
                                     <constraint firstItem="xIt-p4-tJp" firstAttribute="centerY" secondItem="7im-4u-NRj" secondAttribute="centerY" id="Db1-4i-gRm"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ccn-fZ-ccF" secondAttribute="trailing" constant="20" id="EkA-1k-95n"/>
+                                    <constraint firstItem="Ccn-fZ-ccF" firstAttribute="centerY" secondItem="7im-4u-NRj" secondAttribute="centerY" id="PhO-zs-SqX"/>
+                                    <constraint firstItem="SIT-e7-0v7" firstAttribute="leading" secondItem="7im-4u-NRj" secondAttribute="leading" constant="20" id="VfC-1I-3UC"/>
                                     <constraint firstAttribute="height" constant="50" id="oad-eG-qpd"/>
+                                    <constraint firstItem="SIT-e7-0v7" firstAttribute="centerY" secondItem="7im-4u-NRj" secondAttribute="centerY" id="wY7-E0-FIV"/>
                                 </constraints>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-Mh-rfE">
@@ -54,7 +72,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="changeRegion" destination="Ccn-fZ-ccF" id="dtg-uv-Crq"/>
                         <outlet property="mapView" destination="vLE-Mh-rfE" id="p56-7H-S6x"/>
+                        <outlet property="removeGeo" destination="SIT-e7-0v7" id="8Zi-pn-BN3"/>
                         <outlet property="statusLabel" destination="xIt-p4-tJp" id="Icw-6H-nhi"/>
                     </connections>
                 </viewController>
@@ -128,4 +148,8 @@
             <point key="canvasLocation" x="975" y="127"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="minus" catalog="system" width="128" height="24"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+    </resources>
 </document>

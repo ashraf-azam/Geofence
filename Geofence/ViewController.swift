@@ -15,6 +15,8 @@ import RxCocoa
 class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var changeRegion: UIButton!
+    @IBOutlet weak var removeGeo: UIButton!
     
     var stateRelay = BehaviorRelay<String?>(value: "")
     
@@ -23,11 +25,27 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        removeMonitoredRegion()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         mapView.setUserTrackingMode(.follow, animated: true)
+    }
+    
+    @IBAction func changeRegion(_ sender: Any) {
+        print("ok")
+        let coordinate = CLLocationCoordinate2DMake(3.139003, 101.686852)
+        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate.latitude,
+            longitude: coordinate.longitude), radius: 200, identifier: "KL")
+        mapView.removeOverlays(mapView.overlays)
+        locationManager.startMonitoring(for: region)
+        let circle = MKCircle(center: coordinate, radius: region.radius)
+        mapView.addOverlay(circle)
+    }
+    
+    @IBAction func removeGeo(_ sender: Any) {
+        removeMonitoredRegion()
     }
 
     @IBAction func addRegion(_ sender: Any) {
@@ -74,6 +92,14 @@ class ViewController: UIViewController {
         }
     }
     
+    func removeMonitoredRegion() {
+        let monitoredRegions = locationManager.monitoredRegions
+        
+        for region in monitoredRegions{
+            locationManager.stopMonitoring(for: region)
+        }
+    }
+    
 }
 
 extension ViewController: CLLocationManagerDelegate {
@@ -87,13 +113,13 @@ extension ViewController: CLLocationManagerDelegate {
         getCurrentLocation()
         guard let address = self.stateRelay.value else { return }
         showAlert(title: "Hello", msg: "You've entered \(address)")
-        self.statusLabel.text = "Inside \(address)"
+        self.statusLabel.text = "Inside"
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         guard let address = self.stateRelay.value else { return }
         showAlert(title: "Goodbve", msg: "You've left \(address)")
-        self.statusLabel.text = "Outside \(address)"
+        self.statusLabel.text = "Outside"
     }
 
 }
