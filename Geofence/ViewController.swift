@@ -43,11 +43,39 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func getCurrentLocation() {
+        if let currentLocation = locationManager.location {
+            // Get location name
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) in
+                if error == nil {
+                    let firstLocation = placemarks?[0]
+                    let street:String = firstLocation?.thoroughfare ?? firstLocation?.name ?? ""
+                    let state:String = firstLocation?.subAdministrativeArea ?? ""
+                    let country:String = firstLocation?.country ?? ""
+                    
+                    let fullAddress = [street, state, country]
+                        .compactMap{ $0 }
+                        .joined(separator: ", ")
+                    
+                    let showDealsText = "Geofence location : "
+                    let fullString = NSMutableAttributedString(string:showDealsText)
+                    let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)]
+                    let boldString = NSMutableAttributedString(string:fullAddress, attributes:attrs)
+                    fullString.append(boldString)
+                    
+                    print(fullAddress)
+                }
+            })
+        }
+    }
+    
 }
 
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
+        getCurrentLocation()
         mapView.showsUserLocation = true
     }
     

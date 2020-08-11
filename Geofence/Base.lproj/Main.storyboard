@@ -46,5 +46,65 @@
             </objects>
             <point key="canvasLocation" x="139" y="127"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="yoq-mF-Hji">
+            <objects>
+                <viewController storyboardIdentifier="PaymentViewController" id="hsF-gE-uNx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9mz-lW-mEZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n80-iH-C9M">
+                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NrG-PD-lrL">
+                                        <rect key="frame" x="20" y="10" width="374" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fad-rL-bpe">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RM0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGW-c5-YLf">
+                                                <rect key="frame" x="0.0" y="30" width="374" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NrG-PD-lrL" secondAttribute="trailing" constant="20" id="6ro-8E-vqi"/>
+                                    <constraint firstAttribute="height" constant="100" id="YZV-fX-DuJ"/>
+                                    <constraint firstItem="NrG-PD-lrL" firstAttribute="top" secondItem="n80-iH-C9M" secondAttribute="top" constant="10" id="c32-fn-nxb"/>
+                                    <constraint firstItem="NrG-PD-lrL" firstAttribute="leading" secondItem="n80-iH-C9M" secondAttribute="leading" constant="20" id="vJl-hx-9pA"/>
+                                    <constraint firstAttribute="bottom" secondItem="NrG-PD-lrL" secondAttribute="bottom" constant="10" id="wYa-LJ-snL"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sl3-8h-RKs">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="M2U-f9-2UU" firstAttribute="trailing" secondItem="sl3-8h-RKs" secondAttribute="trailing" id="2QG-FY-qFA"/>
+                            <constraint firstItem="sl3-8h-RKs" firstAttribute="top" secondItem="M2U-f9-2UU" secondAttribute="top" id="6Gv-Yl-dRn"/>
+                            <constraint firstItem="M2U-f9-2UU" firstAttribute="bottom" secondItem="sl3-8h-RKs" secondAttribute="bottom" id="BgW-2l-ZK1"/>
+                            <constraint firstItem="M2U-f9-2UU" firstAttribute="trailing" secondItem="n80-iH-C9M" secondAttribute="trailing" id="DpW-VK-02G"/>
+                            <constraint firstItem="n80-iH-C9M" firstAttribute="top" secondItem="M2U-f9-2UU" secondAttribute="top" id="EDv-RM-q20"/>
+                            <constraint firstItem="n80-iH-C9M" firstAttribute="leading" secondItem="M2U-f9-2UU" secondAttribute="leading" id="NoK-vf-M3Z"/>
+                            <constraint firstItem="sl3-8h-RKs" firstAttribute="leading" secondItem="M2U-f9-2UU" secondAttribute="leading" id="Ox5-Dn-PXq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M2U-f9-2UU"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fXX-7P-pC1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="975" y="127"/>
+        </scene>
     </scenes>
 </document>
