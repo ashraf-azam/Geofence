@@ -9,10 +9,14 @@
 import UIKit
 import CoreLocation
 import MapKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var statusLabel: UILabel!
+    
+    var stateRelay = BehaviorRelay<String?>(value: "")
     
     let locationManager = CLLocationManager()
 
@@ -53,9 +57,7 @@ class ViewController: UIViewController {
                     let firstLocation = placemarks?[0]
                     let street:String = firstLocation?.thoroughfare ?? firstLocation?.name ?? ""
                     let state:String = firstLocation?.subAdministrativeArea ?? ""
-                    let country:String = firstLocation?.country ?? ""
-                    
-                    let fullAddress = [street, state, country]
+                    let fullAddress = [street, state]
                         .compactMap{ $0 }
                         .joined(separator: ", ")
                     
@@ -65,6 +67,7 @@ class ViewController: UIViewController {
                     let boldString = NSMutableAttributedString(string:fullAddress, attributes:attrs)
                     fullString.append(boldString)
                     
+                    self.stateRelay.accept(fullAddress)
                     print(fullAddress)
                 }
             })
@@ -81,13 +84,16 @@ extension ViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        showAlert(title: "Hello", msg: "You've entered a new region")
-        self.statusLabel.text = "Inside"
+        getCurrentLocation()
+        guard let address = self.stateRelay.value else { return }
+        showAlert(title: "Hello", msg: "You've entered \(address)")
+        self.statusLabel.text = "Inside \(address)"
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        showAlert(title: "Goodbve", msg: "You've left the region")
-        self.statusLabel.text = "Outside"
+        guard let address = self.stateRelay.value else { return }
+        showAlert(title: "Goodbve", msg: "You've left \(address)")
+        self.statusLabel.text = "Outside \(address)"
     }
 
 }
