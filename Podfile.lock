@@ -1,4 +1,5 @@
 PODS:
+  - DropDown (2.3.13)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -7,20 +8,23 @@ PODS:
   - RxSwift (5.1.1)
 
 DEPENDENCIES:
+  - DropDown
   - RxCocoa (~> 5.1.1)
   - RxSwift (~> 5.1.1)
 
 SPEC REPOS:
   trunk:
+    - DropDown
     - RxCocoa
     - RxRelay
     - RxSwift
 
 SPEC CHECKSUMS:
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 72eac24686ab128f6054831b1beec72c316713ef
+PODFILE CHECKSUM: 5e28299885874de99ffafd37457b89c6abf0965e
 
 COCOAPODS: 1.9.3

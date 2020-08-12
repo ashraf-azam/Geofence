@@ -14,6 +14,8 @@
 		86C20B8424DF94E2001D62DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86C20B8324DF94E2001D62DE /* Assets.xcassets */; };
 		86C20B8724DF94E2001D62DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86C20B8524DF94E2001D62DE /* LaunchScreen.storyboard */; };
 		86C20B9024DFA74C001D62DE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86C20B8F24DFA74C001D62DE /* MapKit.framework */; };
+		86CF021824E3C8F900094068 /* UIView+Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF021724E3C8F900094068 /* UIView+Visibility.swift */; };
+		86CF021A24E3C92000094068 /* UIView+Opacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF021924E3C92000094068 /* UIView+Opacity.swift */; };
 		AC2A32036306F378CBEB7E88 /* Pods_Geofence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F396FAEB4E662A3EFBD9EE0E /* Pods_Geofence.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		86C20B8624DF94E2001D62DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86C20B8824DF94E2001D62DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86C20B8F24DFA74C001D62DE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		86CF021724E3C8F900094068 /* UIView+Visibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Visibility.swift"; sourceTree = "<group>"; };
+		86CF021924E3C92000094068 /* UIView+Opacity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Opacity.swift"; sourceTree = "<group>"; };
 		94CB29DEC35C8ACD1E7CBCBC /* Pods-Geofence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geofence.debug.xcconfig"; path = "Target Support Files/Pods-Geofence/Pods-Geofence.debug.xcconfig"; sourceTree = "<group>"; };
 		F396FAEB4E662A3EFBD9EE0E /* Pods_Geofence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Geofence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -79,6 +83,8 @@
 				86AC9A0824E1A03100E1432D /* Kuala Lumpur.gpx */,
 				86AC9A0924E1A0E100E1432D /* Mutiara Damansara.gpx */,
 				86AC9A0A24E1A19300E1432D /* Bukit Kiara Park.gpx */,
+				86CF021724E3C8F900094068 /* UIView+Visibility.swift */,
+				86CF021924E3C92000094068 /* UIView+Opacity.swift */,
 			);
 			path = Geofence;
 			sourceTree = "<group>";
@@ -218,7 +224,9 @@
 			files = (
 				86C20B7F24DF94E1001D62DE /* ViewController.swift in Sources */,
 				86C20B7B24DF94E1001D62DE /* AppDelegate.swift in Sources */,
+				86CF021824E3C8F900094068 /* UIView+Visibility.swift in Sources */,
 				86C20B7D24DF94E1001D62DE /* SceneDelegate.swift in Sources */,
+				86CF021A24E3C92000094068 /* UIView+Opacity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

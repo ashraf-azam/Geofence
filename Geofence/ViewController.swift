@@ -11,26 +11,50 @@ import CoreLocation
 import MapKit
 import RxSwift
 import RxCocoa
+import DropDown
 
 class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var changeRegion: UIButton!
     @IBOutlet weak var removeGeo: UIButton!
+    @IBOutlet weak var dropdownMenuView: UIView!
     
     var stateRelay = BehaviorRelay<String?>(value: "")
+    var displayDropdownButtonTap : Driver<Void> = .never()
     
     let locationManager = CLLocationManager()
+    let menuOptions: [String] = ["Kuala Lumpur", "Mutiara Damansara", "Bukit Kiara"]
+    var dropdown: DropDown?
+    var isDropdownMenuShown = false
+    let disposeBag = DisposeBag()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTransformInput()
+        subscribe()
+        dropdownMenuView.visibility = .hidden
+        isDropdownMenuShown = false
+        setupDropdownMenu()
         removeMonitoredRegion()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         mapView.setUserTrackingMode(.follow, animated: true)
+    }
+    
+    func setupTransformInput() {
+        self.displayDropdownButtonTap = changeRegion.rx.tap.asDriver()
+    }
+    
+    func subscribe() {
+        let displayDropdown = displayDropdownButtonTap
+        .do(onNext: { _ in
+            self.displayDropdownMenu()
+            })
+        disposeBag.insert(displayDropdown.drive())
     }
     
     func setRegion(lat: CLLocationDegrees, long: CLLocationDegrees, identifier: String) {
@@ -77,6 +101,7 @@ class ViewController: UIViewController {
     }
     
     func removeMonitoredRegion() {
+        mapView.removeOverlays(mapView.overlays)
         let monitoredRegions = locationManager.monitoredRegions
         
         for region in monitoredRegions{
@@ -93,21 +118,41 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func setupDropdownMenu() {
+        self.dropdown = DropDown()
+        
+        dropdown!.anchorView = self.dropdownMenuView
+        dropdown!.dataSource = self.menuOptions
+        
+        // Action triggered on selection
+        dropdown!.selectionAction = { [unowned self] (index: Int, item: String) in
+            if index == 0 {
+                self.setRegion(lat: 3.139003, long: 101.686852, identifier: "KL")
+            }
+            else if index == 1 {
+                self.setRegion(lat: 3.157090, long: 101.610090, identifier: "Mutiara Damansara")
+            }
+            else if index == 2 {
+                self.setRegion(lat: 3.143260, long: 101.643370, identifier: "Mutiara Damansara")
+            }
+        }
+    }
+    
+    func displayDropdownMenu() {
+        if !self.isDropdownMenuShown {
+            self.dropdown!.show()
+            self.isDropdownMenuShown = true
+            
+        } else {
+            self.dropdown!.hide()
+            self.isDropdownMenuShown = false
+        }
+    }
 }
     
 //MARK: Action
 extension ViewController {
-    @IBAction func changeRegion(_ sender: Any) {
-        print("ok")
-        let coordinate = CLLocationCoordinate2DMake(3.139003, 101.686852)
-        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate.latitude,
-            longitude: coordinate.longitude), radius: 200, identifier: "KL")
-        mapView.removeOverlays(mapView.overlays)
-        locationManager.startMonitoring(for: region)
-        let circle = MKCircle(center: coordinate, radius: region.radius)
-        mapView.addOverlay(circle)
-    }
-    
     @IBAction func removeGeo(_ sender: Any) {
         removeMonitoredRegion()
     }
