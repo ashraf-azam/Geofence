@@ -16,8 +16,8 @@ Method B:
 1. On simulater go to feature > location > custom location
 2. On the app press ellipsis ![ellipsis](https://user-images.githubusercontent.com/57282015/90032932-7c5e3800-dcf1-11ea-90d6-263cb926694a.png)
  and pick a geofence area(there are 3 location to chose from)
-3. Change user location on xcode :
-<img width="107" alt="user_location" src="https://user-images.githubusercontent.com/57282015/90033271-db23b180-dcf1-11ea-8705-7108d0c7ec1d.png"> 
+3. Change user location on xcode <img width="107" alt="user_location" src="https://user-images.githubusercontent.com/57282015/90033271-db23b180-dcf1-11ea-8705-7108d0c7ec1d.png"> 
+4. Press the clear button before choosing another geofence area
 
 
 Demo :
