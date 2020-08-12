@@ -6,6 +6,7 @@ To use the app :
 2. Pod install
 
 Usage:
+
 Method A:
 1. On simulater go to feature > location > freeway drive
 2. Set geofence area by long press anywhere on the freeway
