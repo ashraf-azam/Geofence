@@ -154,6 +154,7 @@ class ViewController: UIViewController {
 //MARK: Action
 extension ViewController {
     @IBAction func removeGeo(_ sender: Any) {
+        statusLabel.text = "Status"
         removeMonitoredRegion()
     }
 
@@ -179,14 +180,16 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         getCurrentLocation()
-        guard let address = self.stateRelay.value else { return }
-        showAlert(title: "Hello", msg: "You've entered \(address)")
+//        guard let address = self.stateRelay.value else { return }
+//        showAlert(title: "Hello", msg: "You've entered \(address)")
+        showAlert(title: "Hello", msg: "You've entered geofence area")
         self.statusLabel.text = "Inside"
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        guard let address = self.stateRelay.value else { return }
-        showAlert(title: "Goodbve", msg: "You've left \(address)")
+//        guard let address = self.stateRelay.value else { return }
+//        showAlert(title: "Goodbve", msg: "You've left \(address)")
+        showAlert(title: "Hello", msg: "You've left geofence area")
         self.statusLabel.text = "Outside"
     }
 
