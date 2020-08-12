@@ -33,26 +33,10 @@ class ViewController: UIViewController {
         mapView.setUserTrackingMode(.follow, animated: true)
     }
     
-    @IBAction func changeRegion(_ sender: Any) {
-        print("ok")
-        let coordinate = CLLocationCoordinate2DMake(3.139003, 101.686852)
+    func setRegion(lat: CLLocationDegrees, long: CLLocationDegrees, identifier: String) {
+        let coordinate = CLLocationCoordinate2DMake(lat, long)
         let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate.latitude,
-            longitude: coordinate.longitude), radius: 200, identifier: "KL")
-        mapView.removeOverlays(mapView.overlays)
-        locationManager.startMonitoring(for: region)
-        let circle = MKCircle(center: coordinate, radius: region.radius)
-        mapView.addOverlay(circle)
-    }
-    
-    @IBAction func removeGeo(_ sender: Any) {
-        removeMonitoredRegion()
-    }
-
-    @IBAction func addRegion(_ sender: Any) {
-        guard let longPress = sender as? UILongPressGestureRecognizer else { return }
-        let touchLocation = longPress.location(in: mapView)
-        let coordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
-        let region = CLCircularRegion(center: coordinate, radius: 200, identifier: "geofence")
+            longitude: coordinate.longitude), radius: 200, identifier: identifier)
         mapView.removeOverlays(mapView.overlays)
         locationManager.startMonitoring(for: region)
         let circle = MKCircle(center: coordinate, radius: region.radius)
@@ -100,8 +84,47 @@ class ViewController: UIViewController {
         }
     }
     
+    func removeMonitoredRegionWith(identifier: String) {
+        let monitoredRegions = locationManager.monitoredRegions
+        
+        for region in monitoredRegions{
+            if region.identifier == identifier {
+                locationManager.stopMonitoring(for: region)
+            }
+        }
+    }
+}
+    
+//MARK: Action
+extension ViewController {
+    @IBAction func changeRegion(_ sender: Any) {
+        print("ok")
+        let coordinate = CLLocationCoordinate2DMake(3.139003, 101.686852)
+        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate.latitude,
+            longitude: coordinate.longitude), radius: 200, identifier: "KL")
+        mapView.removeOverlays(mapView.overlays)
+        locationManager.startMonitoring(for: region)
+        let circle = MKCircle(center: coordinate, radius: region.radius)
+        mapView.addOverlay(circle)
+    }
+    
+    @IBAction func removeGeo(_ sender: Any) {
+        removeMonitoredRegion()
+    }
+
+    @IBAction func addRegion(_ sender: Any) {
+        guard let longPress = sender as? UILongPressGestureRecognizer else { return }
+        let touchLocation = longPress.location(in: mapView)
+        let coordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
+        let region = CLCircularRegion(center: coordinate, radius: 200, identifier: "geofence")
+        mapView.removeOverlays(mapView.overlays)
+        locationManager.startMonitoring(for: region)
+        let circle = MKCircle(center: coordinate, radius: region.radius)
+        mapView.addOverlay(circle)
+    }
 }
 
+//MARK: CLLocationManagerDelegate
 extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
@@ -124,6 +147,7 @@ extension ViewController: CLLocationManagerDelegate {
 
 }
 
+//MARK: MKMapViewDelegate
 extension ViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let circleOverlay = overlay as? MKCircle else { return MKTileOverlayRenderer() }
